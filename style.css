@@ -1,0 +1,607 @@
+:root{
+    --bg: #bfe1ff;
+
+    /* ✅ адаптивні розміри, щоб не накладалось */
+    --tileW: clamp(150px, 13.5vw, 220px);
+    --tileH: clamp(175px, 16.5vw, 260px);
+
+    --gapX: clamp(18px, 5vw, 110px);
+    --rowGap: clamp(18px, 5vw, 140px);
+
+    --padX: clamp(12px, 2.2vw, 24px);
+    --padY: clamp(12px, 2.4vh, 26px);
+
+    --centerW: clamp(240px, 28vw, 420px);
+    --centerH: clamp(140px, 19vw, 230px);
+
+    --radius: 18px;
+    --brd: #d6dde6;
+    --tileBg: #e6f2ff;
+    --text: #0f172a;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; margin: 0; }
+
+body{
+    background: var(--bg);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+}
+
+/* ===== ROOT ===== */
+.dashboard{
+    position: relative;
+    min-height: 100vh;
+    padding: var(--padY) var(--padX);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== LINES (two columns) ===== */
+.lines{
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: var(--gapX);
+
+    height: calc(100vh - (var(--padY) * 2));
+    width: 100%;
+}
+
+/* columns */
+.block-line-1,
+.block-line-2{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0;
+    min-width: 0;
+}
+
+/* rows */
+.row{
+    display: flex;
+    gap: var(--rowGap);
+    align-items: center;
+}
+
+.row-top,
+.row-bot{
+    justify-content: center;
+}
+
+/* title */
+.line-title-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.line-title{
+    margin: 0;
+    font-weight: 900;
+    font-size: clamp(20px, 2.2vw, 28px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* ===== MID ROW: force empty center slot ===== */
+.row-mid{
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* ===== TILE BASE ===== */
+.tile{
+    width: var(--tileW);
+    min-height: var(--tileH);
+    border-radius: var(--radius);
+    background: var(--tileBg);
+    border: 1px solid var(--brd);
+    padding: 12px;
+
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+    text-align: left;
+    transition: none;
+}
+.tile-head{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    row-gap: 6px;
+}
+
+.tile-label{
+    font-weight: 900;
+    font-size: clamp(13px, 1.4vw, 16px);
+    letter-spacing: 0.02em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.tile-status{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 26px;
+}
+
+.tile-icon{
+    width: 100%;
+    height: clamp(64px, 7vw, 96px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f172a;
+    background: #eef6ff;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    flex: 1;
+    min-height: clamp(64px, 7.5vw, 110px);
+    align-self: center;
+    position: relative;
+}
+
+.tile-icon-svg{
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.tile-icon-img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.tile-metric{
+    margin-top: auto;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    justify-content: center;
+}
+
+.tile-value{
+    font-weight: 900;
+    font-size: clamp(24px, 2.6vw, 36px);
+    line-height: 1;
+}
+
+.tile-icon-soc{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.tile-value-sm{
+    font-weight: 800;
+    font-size: clamp(24px, 2.8vw, 34px);
+    line-height: 1;
+}
+
+.tile-unit{
+    font-weight: 800;
+    font-size: clamp(12px, 1.2vw, 14px);
+    opacity: 0.7;
+}
+
+.tile-unit-sm{
+    font-weight: 700;
+    font-size: clamp(12px, 1.4vw, 16px);
+    opacity: 0.65;
+}
+
+/* ===== COLLEGE (background center) ===== */
+.college-metric{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+.college-note{
+    position: absolute;
+    top: clamp(10px, 2vh, 24px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 900;
+    font-size: clamp(14px, 1.6vw, 20px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #0f172a;
+    background: #e6f2ff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 8px 14px;
+    max-width: min(90vw, 520px);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.college-img{
+    width: var(--centerW);
+    height: var(--centerH);
+    border-radius: 18px;
+    background-image: url("./assets/HPK.png");
+}
+
+.college-kw{
+    margin-top: 12px;
+    width: min(520px, 70vw);
+    text-align: center;
+
+    font-weight: 900;
+    font-size: clamp(26px, 4vw, 52px);
+    line-height: 1;
+
+    background: #e6f2ff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 14px 18px;
+}
+
+/* ===== LOADING OVERLAY ===== */
+.loading-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #bfe1ff;
+}
+
+.loading-overlay.hidden{ display: none; }
+
+.loading-box{
+    text-align: center;
+    padding: 28px 32px;
+    border-radius: 18px;
+    background: #f2f7ff;
+    border: 1px solid #dde3ea;
+    min-width: 260px;
+}
+
+.loading-title{
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
+
+.loading-sub{
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+
+/* ===== MEDIUM SCREENS (avoid center overlap) ===== */
+@media (max-width: 1710px){
+    :root{
+        --tileW: clamp(170px, 12.5vw, 210px);
+        --tileH: clamp(180px, 15vw, 230px);
+        --gapX: clamp(20px, 4.2vw, 80px);
+        --rowGap: clamp(20px, 4.2vw, 100px);
+        --centerW: clamp(300px, 26vw, 400px);
+        --centerH: clamp(170px, 18vw, 230px);
+    }
+}
+
+@media (max-width: 1500px){
+    :root{
+        --tileW: clamp(165px, 12vw, 205px);
+        --tileH: clamp(175px, 14.5vw, 225px);
+        --gapX: clamp(18px, 3.8vw, 72px);
+        --rowGap: clamp(18px, 3.8vw, 90px);
+        --centerW: clamp(260px, 24vw, 360px);
+        --centerH: clamp(155px, 17vw, 215px);
+    }
+}
+
+@media (max-width: 1300px){
+    :root{
+        --tileW: clamp(155px, 11.5vw, 195px);
+        --tileH: clamp(170px, 14vw, 220px);
+        --gapX: clamp(16px, 3.4vw, 64px);
+        --rowGap: clamp(16px, 3.4vw, 84px);
+        --centerW: clamp(235px, 22vw, 330px);
+        --centerH: clamp(145px, 16vw, 205px);
+    }
+
+    .college-kw{
+        width: min(420px, 60vw);
+        font-size: clamp(26px, 3.6vw, 40px);
+    }
+}
+
+@media (max-width: 1100px){
+    :root{
+        --tileW: clamp(150px, 11vw, 190px);
+        --tileH: clamp(165px, 13.5vw, 215px);
+        --gapX: clamp(14px, 3vw, 56px);
+        --rowGap: clamp(14px, 3vw, 76px);
+        --centerW: clamp(215px, 20vw, 310px);
+        --centerH: clamp(135px, 15vw, 195px);
+    }
+}
+
+/* ===== MOBILE (один стовпець + плитки на всю ширину) ===== */
+@media (max-width: 915px){
+    .lines{
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+    }
+
+    .block-line-1,
+    .block-line-2{
+        gap: 14px;
+        justify-content: flex-start;
+    }
+
+    .row{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    /* ✅ плитки на всю ширину */
+    .tile{
+        width: 100%;
+        min-height: 180px;
+    }
+
+    .tile-icon{
+        height: clamp(52px, 18vw, 72px);
+        min-height: clamp(52px, 18vw, 72px);
+    }
+
+    .row-mid{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .college-metric{
+        position: static;
+        pointer-events: auto;
+        margin-top: 16px;
+    }
+
+    .college-note{
+        top: clamp(6px, 1.2vh, 12px);
+        font-size: clamp(12px, 3.2vw, 16px);
+        padding: 6px 10px;
+    }
+
+    .college-kw{
+        width: 100%;
+    }
+
+    .wiring{
+        display: none;
+    }
+}
+
+/* ===== TILE STATE (connection) ===== */
+.tile[data-state]{
+    overflow: hidden;
+}
+
+/* badge */
+.tile-status::before{
+    font-size: clamp(10px, 1.1vw, 12px);
+    font-weight: 900;
+    letter-spacing: 0.02em;
+
+    padding: clamp(4px, 0.6vw, 6px) clamp(8px, 0.9vw, 10px);
+    border-radius: 999px;
+
+    border: 1px solid #dde3ea;
+    background: #f2f7ff;
+    color: #0f172a;
+
+    content: "";
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* states */
+.tile[data-state="ok"]{
+    border-color: #d6dde6;
+}
+
+.tile[data-state="loading"]{
+    filter: none;
+}
+
+.tile[data-state="loading"] .tile-status::before{
+    content: "Звʼязок…";
+    background: #dbeafe;
+    border-color: #93c5fd;
+    color: #1e40af;
+    display: inline-flex;
+}
+
+.tile[data-state="offline"]{
+    border-color: #fca5a5;
+    background: #f3f6fb;
+}
+
+.tile[data-state="offline"] .tile-status::before{
+    content: "Офлайн";
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #991b1b;
+    display: inline-flex;
+}
+
+.tile[data-state="waiting"]{
+    border-color: #bfdbfe;
+    background: #eef6ff;
+}
+
+.tile[data-state="waiting"] .tile-status::before{
+    content: "Очікування";
+    background: #dbeafe;
+    border-color: #bfdbfe;
+    color: #1e40af;
+    display: inline-flex;
+}
+
+.tile[data-state="charging"]{
+    border-color: #6ee7b7;
+    background: #edf4ff;
+}
+
+.tile[data-state="charging"] .tile-status::before{
+    content: "Заряджання";
+    background: #dcfce7;
+    border-color: #86efac;
+    color: #065f46;
+    display: inline-flex;
+}
+
+.tile[data-state="discharging"]{
+    border-color: #fdba74;
+    background: #edf4ff;
+}
+
+.tile[data-state="discharging"] .tile-status::before{
+    content: "Розряджання";
+    background: #ffedd5;
+    border-color: #fdba74;
+    color: #7c2d12;
+    display: inline-flex;
+}
+
+.tile[data-state="generating"]{
+    border-color: #fcd34d;
+    background: #edf4ff;
+}
+
+.tile[data-state="generating"] .tile-status::before{
+    content: "Генерація";
+    background: #fef3c7;
+    border-color: #fcd34d;
+    color: #78350f;
+    display: inline-flex;
+}
+
+.tile[data-state="import"]{
+    border-color: #93c5fd;
+    background: #edf4ff;
+}
+
+.tile[data-state="import"] .tile-status::before{
+    content: "Імпорт";
+    background: #dbeafe;
+    border-color: #93c5fd;
+    color: #1e40af;
+    display: inline-flex;
+}
+
+.tile[data-state="export"]{
+    border-color: #5eead4;
+    background: #edf4ff;
+}
+
+.tile[data-state="export"] .tile-status::before{
+    content: "Експорт";
+    background: #ccfbf1;
+    border-color: #5eead4;
+    color: #134e4a;
+    display: inline-flex;
+}
+
+.tile[data-state="no-grid"]{
+    border-color: #fca5a5;
+    background: #eef6ff;
+}
+
+.tile[data-state="no-grid"] .tile-status::before{
+    content: "Відсутня";
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #991b1b;
+    display: inline-flex;
+}
+
+.tile[data-role="load"][data-state] .tile-status::before{
+    display: none;
+}
+
+.tile[data-role="load"][data-state="offline"] .tile-status::before{
+    display: inline-flex;
+}
+
+/* ===== WIRES ===== */
+.wiring{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.trunk{
+    position: absolute;
+    width: 4px;
+    background: #7b8798;
+    border-radius: 999px;
+    z-index: 2;
+}
+
+.wire{
+    position: absolute;
+    height: 4px;
+    background: #6c788a;
+    border-radius: 999px;
+    z-index: 2;
+
+    transition: none;
+}
+
+.wire.wire--offline{
+    opacity: 0.18;
+}
+
+.hub{
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #5b6678;
+    border: 2px solid #f2f7ff;
+    z-index: 3;
+}

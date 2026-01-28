@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KHPK Solar</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+<main class="dashboard">
+  <section class="lines">
+
+    <!-- ===== LINE 1 (LEFT) ===== -->
+    <div class="block-line-1">
+<!--      <div class="wiring wiring-left" aria-hidden="true">-->
+<!--        <div class="trunk"></div>-->
+<!--        <div class="hub"></div>-->
+
+<!--        <div class="wire wire-solar"></div>-->
+<!--        <div class="wire wire-mid-a"></div>-->
+<!--        <div class="wire wire-mid-b"></div>-->
+<!--        <div class="wire wire-bat"></div>-->
+<!--      </div>-->
+
+      <section class="row row-top">
+        <div class="line-title-wrap">
+          <h3 class="line-title">Лінія 1</h3>
+          <div class="tile tile-solar" id="solar-left" data-role="solar">
+            <div class="tile-head">
+              <div class="tile-label">Сонце</div>
+              <div class="tile-status" aria-hidden="true"></div>
+            </div>
+            <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="tile-icon-svg">
+              <circle cx="32" cy="32" r="12"></circle>
+              <path d="M32 8v8"></path>
+              <path d="M32 48v8"></path>
+              <path d="M8 32h8"></path>
+              <path d="M48 32h8"></path>
+              <path d="M14 14l6 6"></path>
+              <path d="M44 44l6 6"></path>
+              <path d="M14 50l6-6"></path>
+              <path d="M44 20l6-6"></path>
+            </svg>
+            </div>
+            <div class="tile-metric"><span class="tile-value" data-field="solar-power">0.00</span> <span class="tile-unit">kW</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="row row-mid">
+        <div class="tile tile-grid" id="grid-left" data-role="grid">
+          <div class="tile-head">
+            <div class="tile-label">Мережа</div>
+            <div class="tile-status" aria-hidden="true"></div>
+          </div>
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="tile-icon-svg" aria-hidden="true">
+              <path d="M32 10 V54"></path>
+              <path d="M14 16 H50"></path>
+              <path d="M16 16 V22"></path>
+              <path d="M32 16 V22"></path>
+              <path d="M48 16 V22"></path>
+            </svg>
+          </div>
+          <div class="tile-metric"><span class="tile-value" data-field="grid-power">0.00</span> <span class="tile-unit">kW</span></div>
+        </div>
+        <div class="tile tile-load" id="load-left" data-role="load">
+          <div class="tile-head">
+            <div class="tile-label">Навантаження</div>
+            <div class="tile-status" aria-hidden="true"></div>
+          </div>
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="tile-icon-svg" aria-hidden="true">
+              <rect x="6" y="10" width="34" height="22" rx="3"></rect>
+              <rect x="18" y="34" width="10" height="4" rx="1"></rect>
+              <rect x="14" y="38" width="18" height="4" rx="1"></rect>
+              <rect x="44" y="12" width="14" height="32" rx="3"></rect>
+              <line x1="48" y1="18" x2="54" y2="18"></line>
+              <circle cx="51" cy="36" r="2"></circle>
+            </svg>
+          </div>
+          <div class="tile-metric"><span class="tile-value" data-field="load-power">0.00</span> <span class="tile-unit">kW</span></div>
+        </div>
+      </section>
+
+      <section class="row row-bot">
+        <div class="tile tile-battery" id="bat-left" data-role="battery">
+          <div class="tile-head">
+            <div class="tile-label">Батарея</div>
+            <div class="tile-status" aria-hidden="true"></div>
+          </div>
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="tile-icon-svg">
+              <rect x="12" y="10" width="40" height="42" rx="3"></rect>
+              <rect x="20" y="6" width="24" height="4" rx="2"></rect>
+            </svg>
+            <div class="tile-icon-soc"><span class="tile-value-sm" data-field="battery-soc">0.00</span><span class="tile-unit-sm">%</span></div>
+          </div>
+          <div class="tile-metric"><span class="tile-value" data-field="battery-flow">0.00</span> <span class="tile-unit">kW</span></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== LINE 2 (RIGHT) ===== -->
+    <div class="block-line-2">
+<!--      <div class="wiring wiring-right" aria-hidden="true">-->
+<!--        <div class="trunk"></div>-->
+<!--        <div class="hub"></div>-->
+
+<!--        <div class="wire wire-solar"></div>-->
+<!--        <div class="wire wire-mid-a"></div>-->
+<!--        <div class="wire wire-mid-b"></div>-->
+<!--        <div class="wire wire-bat"></div>-->
+<!--      </div>-->
+
+      <section class="row row-top">
+        <div class="line-title-wrap">
+          <h3 class="line-title">Лінія 2</h3>
+          <div class="tile tile-solar" id="solar-right" data-role="solar">
+            <div class="tile-head">
+              <div class="tile-label">Сонце</div>
+              <div class="tile-status" aria-hidden="true"></div>
+            </div>
+            <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="tile-icon-svg">
+              <circle cx="32" cy="32" r="12"></circle>
+              <path d="M32 8v8"></path>
+              <path d="M32 48v8"></path>
+              <path d="M8 32h8"></path>
+              <path d="M48 32h8"></path>
+              <path d="M14 14l6 6"></path>
+              <path d="M44 44l6 6"></path>
+              <path d="M14 50l6-6"></path>
+              <path d="M44 20l6-6"></path>
+            </svg>
+            </div>
+            <div class="tile-metric"><span class="tile-value" data-field="solar-power">0.00</span> <span class="tile-unit">kW</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="row row-mid">
+        <div class="tile tile-load" id="load-right" data-role="load">
+          <div class="tile-head">
+            <div class="tile-label">Навантаження</div>
+            <div class="tile-status" aria-hidden="true"></div>
+          </div>
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="tile-icon-svg" aria-hidden="true">
+              <rect x="6" y="10" width="34" height="22" rx="3"></rect>
+              <rect x="18" y="34" width="10" height="4" rx="1"></rect>
+              <rect x="14" y="38" width="18" height="4" rx="1"></rect>
+              <rect x="44" y="12" width="14" height="32" rx="3"></rect>
+              <line x1="48" y1="18" x2="54" y2="18"></line>
+              <circle cx="51" cy="36" r="2"></circle>
+            </svg>
+          </div>
+          <div class="tile-metric"><span class="tile-value" data-field="load-power">0.00</span> <span class="tile-unit">kW</span></div>
+        </div>
+        <div class="tile tile-grid" id="grid-right" data-role="grid">
+          <div class="tile-head">
+            <div class="tile-label">Мережа</div>
+            <div class="tile-status" aria-hidden="true"></div>
+          </div>
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="tile-icon-svg" aria-hidden="true">
+              <path d="M32 10 V54"></path>
+              <path d="M14 16 H50"></path>
+              <path d="M16 16 V22"></path>
+              <path d="M32 16 V22"></path>
+              <path d="M48 16 V22"></path>
+            </svg>
+          </div>
+          <div class="tile-metric"><span class="tile-value" data-field="grid-power">0.00</span> <span class="tile-unit">kW</span></div>
+        </div>
+      </section>
+
+      <section class="row row-bot">
+        <div class="tile tile-battery" id="bat-right" data-role="battery">
+          <div class="tile-head">
+            <div class="tile-label">Батарея</div>
+            <div class="tile-status" aria-hidden="true"></div>
+          </div>
+          <div class="tile-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="tile-icon-svg">
+              <rect x="12" y="10" width="40" height="42" rx="3"></rect>
+              <rect x="20" y="6" width="24" height="4" rx="2"></rect>
+            </svg>
+            <div class="tile-icon-soc"><span class="tile-value-sm" data-field="battery-soc">0.00</span><span class="tile-unit-sm">%</span></div>
+          </div>
+          <div class="tile-metric"><span class="tile-value" data-field="battery-flow">0.00</span> <span class="tile-unit">kW</span></div>
+        </div>
+      </section>
+    </div>
+
+  </section>
+
+  <!-- Center / background -->
+  <section class="college-metric" aria-label="College">
+    <div class="college-note">Бережіть електроенергію</div>
+    <div class="college-img"></div>
+    <div class="college-kw" id="college-kw">0.00 kW</div>
+  </section>
+</main>
+
+<!-- Loading overlay -->
+<div class="loading-overlay hidden" id="loading-overlay">
+  <div class="loading-box">
+    <div class="loading-title">Завантаження даних</div>
+    <div class="loading-sub">Зачекайте, будь ласка…</div>
+  </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
