@@ -3,7 +3,7 @@
 
     /* ✅ адаптивні розміри, щоб не накладалось */
     --tileW: clamp(150px, 13.5vw, 220px);
-    --tileH: clamp(175px, 16.5vw, 260px);
+    --tileH: clamp(150px, 22vh, 260px);
 
     --gapX: clamp(18px, 5vw, 110px);
     --rowGap: clamp(18px, 5vw, 140px);
@@ -119,7 +119,7 @@ body{
 .tile-head{
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 12px;
     flex-wrap: wrap;
@@ -128,10 +128,14 @@ body{
 
 .tile-label{
     font-weight: 900;
-    font-size: clamp(13px, 1.4vw, 16px);
+    font-size: clamp(11px, 1.3vw, 16px);
     letter-spacing: 0.02em;
     text-align: left;
     text-transform: uppercase;
+    line-height: 1.1;
+    max-width: 100%;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .tile-status{
@@ -139,6 +143,7 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 26px;
+    align-self: flex-start;
 }
 
 .tile-icon{
@@ -234,7 +239,7 @@ body{
     left: 50%;
     transform: translateX(-50%);
     font-weight: 900;
-    font-size: clamp(14px, 1.6vw, 20px);
+    font-size: 44px;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #0f172a;
@@ -253,6 +258,8 @@ body{
     border-radius: 18px;
     background-size: contain;
     background-image: url("./assets/HPK.png");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .college-kw{
@@ -311,7 +318,7 @@ body{
 @media (max-width: 1710px){
     :root{
         --tileW: clamp(170px, 12.5vw, 210px);
-        --tileH: clamp(180px, 15vw, 230px);
+        --tileH: clamp(150px, 22vh, 230px);
         --gapX: clamp(20px, 4.2vw, 80px);
         --rowGap: clamp(20px, 4.2vw, 100px);
         --centerW: clamp(300px, 26vw, 400px);
@@ -322,7 +329,7 @@ body{
 @media (max-width: 1500px){
     :root{
         --tileW: clamp(165px, 12vw, 205px);
-        --tileH: clamp(175px, 14.5vw, 225px);
+        --tileH: clamp(150px, 22vh, 225px);
         --gapX: clamp(18px, 3.8vw, 72px);
         --rowGap: clamp(18px, 3.8vw, 90px);
         --centerW: clamp(260px, 24vw, 360px);
@@ -333,7 +340,7 @@ body{
 @media (max-width: 1300px){
     :root{
         --tileW: clamp(155px, 11.5vw, 195px);
-        --tileH: clamp(170px, 14vw, 220px);
+        --tileH: clamp(150px, 22vh, 220px);
         --gapX: clamp(16px, 3.4vw, 64px);
         --rowGap: clamp(16px, 3.4vw, 84px);
         --centerW: clamp(235px, 22vw, 330px);
@@ -346,10 +353,28 @@ body{
     }
 }
 
+@media (max-width: 1400px){
+    .tile-label{
+        font-size: clamp(11px, 1.2vw, 15px);
+    }
+}
+
+@media (max-width: 1200px){
+    .tile-label{
+        font-size: clamp(10px, 1.1vw, 14px);
+    }
+}
+
+@media (max-width: 1050px){
+    .tile-label{
+        font-size: clamp(10px, 1.3vw, 13px);
+    }
+}
+
 @media (max-width: 1250px){
     :root{
         --tileW: clamp(150px, 11vw, 185px);
-        --tileH: clamp(165px, 13vw, 210px);
+        --tileH: clamp(150px, 22vh, 210px);
         --gapX: clamp(12px, 2.6vw, 48px);
         --rowGap: clamp(12px, 2.6vw, 64px);
         --centerW: clamp(200px, 20vw, 280px);
@@ -362,25 +387,39 @@ body{
     }
 
     .college-note{
-        font-size: clamp(12px, 1.4vw, 16px);
+        font-size: 32px;
         padding: 6px 10px;
+    }
+
+    .tile{
+        padding: 10px;
+    }
+
+    .tile-head{
+        gap: 8px;
+        row-gap: 4px;
     }
 }
 
 @media (max-width: 1100px){
     :root{
         --tileW: clamp(150px, 11vw, 190px);
-        --tileH: clamp(165px, 13.5vw, 215px);
+        --tileH: clamp(150px, 22vh, 215px);
         --gapX: clamp(14px, 3vw, 56px);
         --rowGap: clamp(14px, 3vw, 76px);
         --centerW: clamp(215px, 20vw, 310px);
         --centerH: clamp(135px, 15vw, 195px);
+    }
+
+    .college-note {
+        font-size: 26px;
     }
 }
 
 /* ===== MOBILE (один стовпець + плитки на всю ширину) ===== */
 @media (max-width: 915px){
     .lines{
+        margin-top: 30px;
         flex-direction: column;
         align-items: stretch;
         height: auto;
@@ -422,7 +461,7 @@ body{
 
     .college-note{
         top: clamp(6px, 1.2vh, 12px);
-        font-size: clamp(12px, 3.2vw, 16px);
+        font-size: clamp(16px, 3.2vw, 24px);
         padding: 6px 10px;
     }
 
