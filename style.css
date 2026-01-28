@@ -251,6 +251,7 @@ body{
     width: var(--centerW);
     height: var(--centerH);
     border-radius: 18px;
+    background-size: contain;
     background-image: url("./assets/HPK.png");
 }
 
@@ -342,6 +343,27 @@ body{
     .college-kw{
         width: min(420px, 60vw);
         font-size: clamp(26px, 3.6vw, 40px);
+    }
+}
+
+@media (max-width: 1250px){
+    :root{
+        --tileW: clamp(150px, 11vw, 185px);
+        --tileH: clamp(165px, 13vw, 210px);
+        --gapX: clamp(12px, 2.6vw, 48px);
+        --rowGap: clamp(12px, 2.6vw, 64px);
+        --centerW: clamp(200px, 20vw, 280px);
+        --centerH: clamp(130px, 14vw, 180px);
+    }
+
+    .college-kw{
+        width: min(360px, 58vw);
+        font-size: clamp(24px, 3.2vw, 36px);
+    }
+
+    .college-note{
+        font-size: clamp(12px, 1.4vw, 16px);
+        padding: 6px 10px;
     }
 }
 
