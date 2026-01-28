@@ -359,6 +359,12 @@ body{
     }
 }
 
+@media (max-width: 1400px){
+    .tile-label{
+        font-size: clamp(10px, 1.15vw, 13px);
+    }
+}
+
 @media (max-width: 1200px){
     .tile-label{
         font-size: clamp(10px, 1.1vw, 14px);
