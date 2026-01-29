@@ -217,8 +217,8 @@
             setTileState(side, "grid", "waiting");
             return;
         }
-        if (power < 0) setTileState(side, "grid", "export");
-        else if (power > 0) setTileState(side, "grid", "import");
+        if (power < 0) setTileState(side, "grid", "import");
+        else if (power > 0) setTileState(side, "grid", "export");
         else setTileState(side, "grid", "waiting");
     }
 
@@ -370,12 +370,44 @@
 
     window.__relayoutWires = relayoutWires;
 
+    // ===== PREVENT SCREEN SLEEP (Wake Lock) =====
+    let wakeLock = null;
+    async function requestWakeLock() {
+        if (!("wakeLock" in navigator)) return;
+        try {
+            wakeLock = await navigator.wakeLock.request("screen");
+            wakeLock.addEventListener("release", () => {
+                wakeLock = null;
+            });
+        } catch (err) {
+            console.warn("Wake Lock failed:", err);
+        }
+    }
+
+    function handleVisibilityChange() {
+        if (document.visibilityState === "visible") {
+            requestWakeLock();
+        }
+    }
+
     window.addEventListener("load", function () {
         initTileStates();
         relayoutWires();
         loadInverterData();
 
         setInterval(() => loadInverterData(), 15000);
+
+        requestWakeLock();
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+        ["click", "touchstart", "keydown"].forEach((evt) => {
+            document.addEventListener(
+                evt,
+                () => {
+                    requestWakeLock();
+                },
+                { once: true, passive: true }
+            );
+        });
     });
     window.addEventListener("resize", relayoutWires);
 })();

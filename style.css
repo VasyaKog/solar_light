@@ -446,12 +446,37 @@ body{
     /* ✅ плитки на всю ширину */
     .tile{
         width: 100%;
-        min-height: 180px;
+        min-height: 140px;
+        padding: 10px;
     }
 
     .tile-icon{
-        height: clamp(52px, 18vw, 72px);
-        min-height: clamp(52px, 18vw, 72px);
+        height: clamp(40px, 14vw, 64px);
+        min-height: clamp(40px, 14vw, 64px);
+    }
+
+    .tile-value{
+        font-size: clamp(26px, 8vw, 36px);
+    }
+
+    .tile-unit{
+        font-size: clamp(12px, 3.4vw, 14px);
+    }
+
+    .tile-value-sm{
+        font-size: clamp(22px, 7vw, 30px);
+    }
+
+    .tile-unit-sm{
+        font-size: clamp(12px, 3.4vw, 14px);
+    }
+
+    .tile-label{
+        font-size: clamp(12px, 3.6vw, 16px);
+    }
+
+    .tile-status::before{
+        font-size: clamp(10px, 3vw, 12px);
     }
 
     .row-mid{
@@ -477,6 +502,97 @@ body{
 
     .wiring{
         display: none;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 550px) {
+    .tile-icon {
+        width: 50%;
+    }
+}
+
+@media (max-width: 550px) and (min-width: 450px) {
+    .tile-icon {
+        width: 75%;
+    }
+}
+
+/* ===== SHORT SCREENS (before single column) ===== */
+@media (max-height: 760px) and (min-width: 916px){
+    :root{
+        --tileH: clamp(140px, 18vh, 190px);
+        --rowGap: clamp(10px, 2.4vh, 40px);
+        --centerH: clamp(120px, 16vh, 180px);
+    }
+
+    .tile-icon{
+        height: clamp(56px, 8vh, 80px);
+        min-height: clamp(56px, 8vh, 80px);
+    }
+
+    .tile-value{
+        font-size: clamp(22px, 3vw, 30px);
+    }
+
+    .college-kw{
+        font-size: clamp(22px, 3.2vw, 36px);
+        padding: 10px 14px;
+    }
+}
+
+/* ===== TV 1080p: fixed sizes to avoid clamp/vh quirks ===== */
+@media (min-width: 1890px) and (max-width: 1950px) and (min-height: 1040px) and (max-height: 1100px){
+    :root{
+        --tileW: 200px;
+        --tileH: 220px;
+        --gapX: 90px;
+        --rowGap: 96px;
+        --padX: 24px;
+        --padY: 24px;
+        --centerW: 360px;
+        --centerH: 210px;
+    }
+
+    .lines{
+        height: 1032px;
+    }
+
+    .line-title{
+        font-size: 26px;
+    }
+
+    .tile-label{
+        font-size: 14px;
+    }
+
+    .tile-icon{
+        height: 86px;
+        min-height: 86px;
+    }
+
+    .tile-value{
+        font-size: 32px;
+    }
+
+    .tile-unit{
+        font-size: 14px;
+    }
+
+    .tile-value-sm{
+        font-size: 30px;
+    }
+
+    .tile-unit-sm{
+        font-size: 14px;
+    }
+
+    .college-note{
+        font-size: 50px;
+    }
+
+    .college-kw{
+        width: 460px;
+        font-size: 40px;
     }
 }
 
