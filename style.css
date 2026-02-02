@@ -1,18 +1,18 @@
 :root{
     --bg: #bfe1ff;
 
-    /* ✅ адаптивні розміри, щоб не накладалось */
-    --tileW: clamp(150px, 13.5vw, 220px);
-    --tileH: clamp(150px, 22vh, 260px);
+    /* ✅ статичні розміри (px) + контроль через брейкпойнти */
+    --tileW: 200px;
+    --tileH: 220px;
 
-    --gapX: clamp(18px, 5vw, 110px);
-    --rowGap: clamp(18px, 5vw, 140px);
+    --gapX: 90px;
+    --rowGap: 96px;
 
-    --padX: clamp(12px, 2.2vw, 24px);
-    --padY: clamp(12px, 2.4vh, 26px);
+    --padX: 24px;
+    --padY: 24px;
 
-    --centerW: clamp(240px, 28vw, 420px);
-    --centerH: clamp(140px, 19vw, 230px);
+    --centerW: 360px;
+    --centerH: 210px;
 
     --radius: 18px;
     --brd: #d6dde6;
@@ -27,6 +27,10 @@ body{
     background: var(--bg);
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
 }
 
 /* ===== ROOT ===== */
@@ -37,6 +41,7 @@ body{
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 /* ===== LINES (two columns) ===== */
@@ -49,7 +54,7 @@ body{
     align-items: stretch;
     gap: var(--gapX);
 
-    height: calc(100vh - (var(--padY) * 2));
+    flex: 1;
     width: 100%;
 }
 
@@ -87,7 +92,7 @@ body{
 .line-title{
     margin: 0;
     font-weight: 900;
-    font-size: clamp(20px, 2.2vw, 28px);
+    font-size: 26px;
     letter-spacing: 0.02em;
     text-transform: uppercase;
 }
@@ -128,7 +133,7 @@ body{
 
 .tile-label{
     font-weight: 900;
-    font-size: clamp(11px, 1.3vw, 16px);
+    font-size: 14px;
     letter-spacing: 0.02em;
     text-align: left;
     text-transform: uppercase;
@@ -148,7 +153,7 @@ body{
 
 .tile-icon{
     width: 100%;
-    height: clamp(64px, 7vw, 96px);
+    height: 86px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,7 +162,7 @@ body{
     border-radius: 14px;
     border: 1px solid #e5e7eb;
     flex: 1;
-    min-height: clamp(64px, 7.5vw, 110px);
+    min-height: 86px;
     align-self: center;
     position: relative;
 }
@@ -187,7 +192,7 @@ body{
 
 .tile-value{
     font-weight: 900;
-    font-size: clamp(24px, 2.6vw, 36px);
+    font-size: 32px;
     line-height: 1;
 }
 
@@ -204,19 +209,19 @@ body{
 
 .tile-value-sm{
     font-weight: 800;
-    font-size: clamp(24px, 2.8vw, 34px);
+    font-size: 30px;
     line-height: 1;
 }
 
 .tile-unit{
     font-weight: 800;
-    font-size: clamp(12px, 1.2vw, 14px);
+    font-size: 14px;
     opacity: 0.7;
 }
 
 .tile-unit-sm{
     font-weight: 700;
-    font-size: clamp(12px, 1.4vw, 16px);
+    font-size: 14px;
     opacity: 0.65;
 }
 
@@ -235,11 +240,11 @@ body{
 
 .college-note{
     position: absolute;
-    top: clamp(10px, 2vh, 24px);
+    top: 16px;
     left: 50%;
     transform: translateX(-50%);
     font-weight: 900;
-    font-size: 44px;
+    font-size: 50px;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     color: #0f172a;
@@ -247,7 +252,7 @@ body{
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     padding: 8px 14px;
-    max-width: min(90vw, 520px);
+    max-width: 520px;
     text-align: center;
     line-height: 1.2;
 }
@@ -264,11 +269,11 @@ body{
 
 .college-kw{
     margin-top: 12px;
-    width: min(520px, 70vw);
+    width: 460px;
     text-align: center;
 
     font-weight: 900;
-    font-size: clamp(26px, 4vw, 52px);
+    font-size: 40px;
     line-height: 1;
 
     background: #e6f2ff;
@@ -314,116 +319,126 @@ body{
 }
 
 
-/* ===== MEDIUM SCREENS (avoid center overlap) ===== */
-@media (max-width: 1710px){
+/* ===== STATIC BREAKPOINTS (no clamp/calc) ===== */
+@media (max-width: 1700px){
     :root{
-        --tileW: clamp(170px, 12.5vw, 210px);
-        --tileH: clamp(150px, 22vh, 230px);
-        --gapX: clamp(20px, 4.2vw, 80px);
-        --rowGap: clamp(20px, 4.2vw, 100px);
-        --centerW: clamp(300px, 26vw, 400px);
-        --centerH: clamp(170px, 18vw, 230px);
+        --tileW: 190px;
+        --tileH: 210px;
+        --gapX: 70px;
+        --rowGap: 80px;
+        --centerW: 330px;
+        --centerH: 200px;
     }
+
+    .line-title{ font-size: 24px; }
+    .tile-icon{ height: 78px; min-height: 78px; }
+    .tile-value{ font-size: 30px; }
+    .college-note{ font-size: 44px; }
+    .college-kw{ width: 420px; font-size: 36px; }
 }
 
 @media (max-width: 1500px){
     :root{
-        --tileW: clamp(165px, 12vw, 205px);
-        --tileH: clamp(150px, 22vh, 225px);
-        --gapX: clamp(18px, 3.8vw, 72px);
-        --rowGap: clamp(18px, 3.8vw, 90px);
-        --centerW: clamp(260px, 24vw, 360px);
-        --centerH: clamp(155px, 17vw, 215px);
+        --tileW: 180px;
+        --tileH: 200px;
+        --gapX: 60px;
+        --rowGap: 72px;
+        --centerW: 310px;
+        --centerH: 190px;
     }
+
+    .line-title{ font-size: 22px; }
+    .tile-label{ font-size: 13px; }
+    .tile-icon{ height: 72px; min-height: 72px; }
+    .tile-value{ font-size: 28px; }
+    .college-note{ font-size: 40px; padding: 6px 10px; }
+    .college-kw{ width: 380px; font-size: 32px; }
 }
 
 @media (max-width: 1300px){
     :root{
-        --tileW: clamp(155px, 11.5vw, 195px);
-        --tileH: clamp(150px, 22vh, 220px);
-        --gapX: clamp(16px, 3.4vw, 64px);
-        --rowGap: clamp(16px, 3.4vw, 84px);
-        --centerW: clamp(235px, 22vw, 330px);
-        --centerH: clamp(145px, 16vw, 205px);
+        --tileW: 170px;
+        --tileH: 190px;
+        --gapX: 48px;
+        --rowGap: 60px;
+        --centerW: 280px;
+        --centerH: 175px;
     }
 
-    .college-kw{
-        width: min(420px, 60vw);
-        font-size: clamp(26px, 3.6vw, 40px);
-    }
-}
-
-@media (max-width: 1400px){
-    .tile-label{
-        font-size: clamp(11px, 1.2vw, 15px);
-    }
-}
-
-@media (max-width: 1400px){
-    .tile-label{
-        font-size: clamp(10px, 1.15vw, 13px);
-    }
-}
-
-@media (max-width: 1200px){
-    .tile-label{
-        font-size: clamp(10px, 1.1vw, 14px);
-    }
-}
-
-@media (max-width: 1050px){
-    .tile-label{
-        font-size: clamp(10px, 1.3vw, 13px);
-    }
-}
-
-@media (max-width: 1250px){
-    :root{
-        --tileW: clamp(150px, 11vw, 185px);
-        --tileH: clamp(150px, 22vh, 210px);
-        --gapX: clamp(12px, 2.6vw, 48px);
-        --rowGap: clamp(12px, 2.6vw, 64px);
-        --centerW: clamp(200px, 20vw, 280px);
-        --centerH: clamp(130px, 14vw, 180px);
-    }
-
-    .college-kw{
-        width: min(360px, 58vw);
-        font-size: clamp(24px, 3.2vw, 36px);
-    }
-
-    .college-note{
-        font-size: 32px;
-        padding: 6px 10px;
-    }
-
-    .tile{
-        padding: 10px;
-    }
-
-    .tile-head{
-        gap: 8px;
-        row-gap: 4px;
-    }
+    .line-title{ font-size: 20px; }
+    .tile-label{ font-size: 12px; }
+    .tile-icon{ height: 64px; min-height: 64px; }
+    .tile-value{ font-size: 26px; }
+    .college-note{ font-size: 34px; }
+    .college-kw{ width: 340px; font-size: 28px; }
 }
 
 @media (max-width: 1100px){
     :root{
-        --tileW: clamp(150px, 11vw, 190px);
-        --tileH: clamp(150px, 22vh, 215px);
-        --gapX: clamp(14px, 3vw, 56px);
-        --rowGap: clamp(14px, 3vw, 76px);
-        --centerW: clamp(215px, 20vw, 310px);
-        --centerH: clamp(135px, 15vw, 195px);
+        --tileW: 160px;
+        --tileH: 180px;
+        --gapX: 36px;
+        --rowGap: 48px;
+        --centerW: 250px;
+        --centerH: 160px;
     }
 
-    .college-note {
-        font-size: 26px;
+    .line-title{ font-size: 18px; }
+    .tile-label{ font-size: 11px; }
+    .tile-icon{ height: 58px; min-height: 58px; }
+    .tile-value{ font-size: 24px; }
+    .college-note{ font-size: 28px; }
+    .college-kw{ width: 300px; font-size: 24px; }
+}
+
+@media (max-width: 1040px) and (min-width: 821px){
+    :root{
+        --tileW: 150px;
+        --tileH: 170px;
+        --gapX: 28px;
+        --rowGap: 40px;
+        --centerW: 220px;
+        --centerH: 150px;
     }
+
+    .line-title{ font-size: 16px; }
+    .tile-label{ font-size: 11px; }
+    .tile-icon{ height: 54px; min-height: 54px; }
+    .tile-value{ font-size: 22px; }
+    .college-note{ font-size: 26px; }
+    .college-kw{ width: 260px; font-size: 22px; }
+}
+
+/* ===== WIDE-ISH, SHORT SCREENS (e.g. 918x562) ===== */
+@media (max-width: 1020px) and (min-width: 900px) and (max-height: 620px){
+    :root{
+        --tileW: 140px;
+        --tileH: 150px;
+        --gapX: 24px;
+        --rowGap: 32px;
+        --padX: 16px;
+        --padY: 12px;
+        --centerW: 220px;
+        --centerH: 130px;
+    }
+
+    .line-title{ font-size: 16px; }
+    .line-title-wrap{ gap: 8px; }
+    .tile{ padding: 8px; }
+    .tile-icon{ height: 48px; min-height: 48px; }
+    .tile-value{ font-size: 20px; }
+    .college-note{ font-size: 20px; padding: 6px 10px; }
+    .college-kw{ width: 300px; font-size: 22px; padding: 8px 10px; }
 }
 
 /* ===== MOBILE (один стовпець + плитки на всю ширину) ===== */
-@media (max-width: 915px){
+@media (max-width: 820px){
+    body{
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 16px;
+    }
+
     .lines{
         margin-top: 30px;
         flex-direction: column;
@@ -451,32 +466,18 @@ body{
     }
 
     .tile-icon{
-        height: clamp(40px, 14vw, 64px);
-        min-height: clamp(40px, 14vw, 64px);
+        height: 56px;
+        min-height: 56px;
     }
 
-    .tile-value{
-        font-size: clamp(26px, 8vw, 36px);
-    }
-
-    .tile-unit{
-        font-size: clamp(12px, 3.4vw, 14px);
-    }
-
-    .tile-value-sm{
-        font-size: clamp(22px, 7vw, 30px);
-    }
-
-    .tile-unit-sm{
-        font-size: clamp(12px, 3.4vw, 14px);
-    }
-
-    .tile-label{
-        font-size: clamp(12px, 3.6vw, 16px);
-    }
+    .tile-value{ font-size: 28px; }
+    .tile-unit{ font-size: 12px; }
+    .tile-value-sm{ font-size: 24px; }
+    .tile-unit-sm{ font-size: 12px; }
+    .tile-label{ font-size: 14px; }
 
     .tile-status::before{
-        font-size: clamp(10px, 3vw, 12px);
+        font-size: 11px;
     }
 
     .row-mid{
@@ -491,13 +492,14 @@ body{
     }
 
     .college-note{
-        top: clamp(6px, 1.2vh, 12px);
-        font-size: clamp(16px, 3.2vw, 24px);
+        top: 8px;
+        font-size: 20px;
         padding: 6px 10px;
     }
 
     .college-kw{
         width: 100%;
+        font-size: 24px;
     }
 
     .wiring{
@@ -506,94 +508,77 @@ body{
 }
 
 @media (max-width: 900px) and (min-width: 550px) {
-    .tile-icon {
-        width: 50%;
-    }
+    .tile-icon { width: 50%; }
 }
 
 @media (max-width: 550px) and (min-width: 450px) {
-    .tile-icon {
-        width: 75%;
-    }
+    .tile-icon { width: 75%; }
 }
 
 /* ===== SHORT SCREENS (before single column) ===== */
 @media (max-height: 760px) and (min-width: 916px){
+    body{
+        padding: 24px;
+    }
+
     :root{
-        --tileH: clamp(140px, 18vh, 190px);
-        --rowGap: clamp(10px, 2.4vh, 40px);
-        --centerH: clamp(120px, 16vh, 180px);
+        --tileH: 160px;
+        --rowGap: 26px;
+        --centerH: 150px;
     }
 
-    .tile-icon{
-        height: clamp(56px, 8vh, 80px);
-        min-height: clamp(56px, 8vh, 80px);
-    }
-
-    .tile-value{
-        font-size: clamp(22px, 3vw, 30px);
-    }
-
-    .college-kw{
-        font-size: clamp(22px, 3.2vw, 36px);
-        padding: 10px 14px;
-    }
+    .tile{ padding: 8px; }
+    .tile-icon{ height: 58px; min-height: 58px; }
+    .tile-value{ font-size: 22px; }
+    .college-kw{ font-size: 26px; padding: 10px 12px; }
 }
 
-/* ===== TV 1080p: fixed sizes to avoid clamp/vh quirks ===== */
-@media (min-width: 1890px) and (max-width: 1950px) and (min-height: 1040px) and (max-height: 1100px){
+@media (max-height: 700px) and (min-width: 820px){
+    body{
+        padding: 22px;
+    }
+
     :root{
-        --tileW: 200px;
-        --tileH: 220px;
-        --gapX: 90px;
-        --rowGap: 96px;
-        --padX: 24px;
-        --padY: 24px;
-        --centerW: 360px;
-        --centerH: 210px;
+        --tileH: 145px;
+        --rowGap: 18px;
+        --centerH: 130px;
+        --padY: 12px;
     }
 
-    .lines{
-        height: 1032px;
+    .line-title{ font-size: 16px; }
+    .line-title-wrap{ gap: 6px; }
+    .tile-label{ font-size: 11px; }
+    .tile{ padding: 6px; }
+    .tile-icon{ height: 48px; min-height: 48px; }
+    .tile-value{ font-size: 18px; }
+    .tile-value-sm{ font-size: 20px; }
+    .tile-unit, .tile-unit-sm{ font-size: 11px; }
+    .college-note{ font-size: 20px; padding: 5px 8px; }
+    .college-kw{ width: 280px; font-size: 20px; padding: 8px 10px; }
+}
+
+@media (max-height: 640px) and (min-width: 820px){
+    body{
+        padding: 20px;
     }
 
-    .line-title{
-        font-size: 26px;
+    :root{
+        --tileH: 130px;
+        --rowGap: 14px;
+        --centerH: 115px;
+        --padY: 10px;
     }
 
-    .tile-label{
-        font-size: 14px;
-    }
-
-    .tile-icon{
-        height: 86px;
-        min-height: 86px;
-    }
-
-    .tile-value{
-        font-size: 32px;
-    }
-
-    .tile-unit{
-        font-size: 14px;
-    }
-
-    .tile-value-sm{
-        font-size: 30px;
-    }
-
-    .tile-unit-sm{
-        font-size: 14px;
-    }
-
-    .college-note{
-        font-size: 50px;
-    }
-
-    .college-kw{
-        width: 460px;
-        font-size: 40px;
-    }
+    .line-title{ font-size: 14px; }
+    .line-title-wrap{ gap: 4px; }
+    .tile-label{ font-size: 10px; }
+    .tile{ padding: 5px; }
+    .tile-icon{ height: 42px; min-height: 42px; }
+    .tile-value{ font-size: 16px; }
+    .tile-value-sm{ font-size: 18px; }
+    .tile-unit, .tile-unit-sm{ font-size: 10px; }
+    .college-note{ font-size: 18px; padding: 4px 8px; }
+    .college-kw{ width: 260px; font-size: 18px; padding: 6px 8px; }
 }
 
 /* ===== TILE STATE (connection) ===== */
@@ -603,11 +588,11 @@ body{
 
 /* badge */
 .tile-status::before{
-    font-size: clamp(10px, 1.1vw, 12px);
+    font-size: 12px;
     font-weight: 900;
     letter-spacing: 0.02em;
 
-    padding: clamp(4px, 0.6vw, 6px) clamp(8px, 0.9vw, 10px);
+    padding: 6px 10px;
     border-radius: 999px;
 
     border: 1px solid #dde3ea;
